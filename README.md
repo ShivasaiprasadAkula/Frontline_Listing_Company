@@ -153,3 +153,19 @@ Visit http://localhost:3000 in your browser
 Navigate through pages, sort, search, and manage company listings
 
 Responsive design works on desktop and mobile devices
+
+## Backend Usage
+
+- API server runs at http://localhost:5000 (default)
+
+- Use tools like Postman or cURL to test endpoints
+
+**Example requests:**
+
+- GET http://localhost:5000/api/companies → Fetch all companies
+
+- POST http://localhost:5000/api/companies → Add a new company
+
+- PUT http://localhost:5000/api/companies/:id → Update a company
+
+- DELETE http://localhost:5000/api/companies/:id → Delete a company
