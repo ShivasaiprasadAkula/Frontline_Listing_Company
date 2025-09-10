@@ -14,7 +14,6 @@ A full-stack web application for managing company listings, built with React.js 
 - [Setup Instructions](#setup-instructions)
 - [API Endpoints](#api-endpoints)
 - [Frontend Usage](#frontend-usage)
-- [License](#license)
 
 ---
 
@@ -118,7 +117,9 @@ frontend/
    ```bash 
    npm run server
 
-Frontend Setup
+-
+
+### Frontend Setup
 
 1. Navigate to the frontend folder:
    ```bash
@@ -132,7 +133,9 @@ Frontend Setup
    ```bash
    npm start
 
-API Endpoints
+---
+
+## API Endpoints
 
 | Method | Endpoint             | Description            |
 | ------ | -------------------- | ---------------------- |
@@ -141,3 +144,11 @@ API Endpoints
 | POST   | `/api/companies`     | Create a new company   |
 | PUT    | `/api/companies/:id` | Update a company by ID |
 | DELETE | `/api/companies/:id` | Delete a company by ID |
+
+## Frontend Usage
+
+Visit http://localhost:3000 in your browser
+
+Navigate through pages, sort, search, and manage company listings
+
+Responsive design works on desktop and mobile devices
