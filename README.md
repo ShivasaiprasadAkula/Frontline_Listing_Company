@@ -45,7 +45,8 @@ This application is designed to manage company listings with features like:
 - React Router DOM  
 - Tailwind CSS  
 - Axios  
-- SweetAlert2  
+- SweetAlert2
+- ReactHookForm
 
 **Backend:**  
 - Node.js  
@@ -63,7 +64,8 @@ This application is designed to manage company listings with features like:
   - `react-router-dom` — Routing for React  
   - `axios` — HTTP client for API calls  
   - `sweetalert2` — Popup alerts  
-  - `tailwindcss` — Utility-first CSS framework  
+  - `tailwindcss` — Utility-first CSS framework
+  - `react-hook-form  — Creating forms and validation
 
 - **Backend Libraries**:  
   - `express` — Web framework for Node.js  
@@ -110,14 +112,13 @@ frontend/
    npm install
 
 3. Create a .env file and add your environment variables:
+   ```bash
    PORT=5000
    MONGODB_URI=your_mongodb_connection_string
 
 4. Start the server:
    ```bash 
    npm run server
-
--
 
 ### Frontend Setup
 
