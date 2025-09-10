@@ -66,7 +66,7 @@ This application is designed to manage company listings with features like:
   - `axios` — HTTP client for API calls  
   - `sweetalert2` — Popup alerts  
   - `tailwindcss` — Utility-first CSS framework
-  - `react-hook-form  — Creating forms and validation
+  - `react-hook-form`  — Creating forms and validation
 
 - **Backend Libraries**:  
   - `express` — Web framework for Node.js  
