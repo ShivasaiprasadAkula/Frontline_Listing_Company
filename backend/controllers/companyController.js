@@ -27,59 +27,54 @@ const createCompany = async (req, res) => {
   }
 };
 
-
 const getCompanies = async (req, res) => {
   try {
-    let queryObj = { ...req.query };
+    const { search, sort, page, limit, ...filters } = req.query;
 
-    const excludeFields = ["sort", "search", "page", "limit"];
-    excludeFields.forEach(field => delete queryObj[field]);
+    let filterQuery = { ...filters };
 
-    let filterQuery = { ...queryObj };
-
-    if (req.query.search) {
-      const searchRegex = new RegExp(req.query.search, "i");
+    if (search) {
+      const regex = new RegExp(search, "i");
       filterQuery.$or = [
-        { name: searchRegex },
-        { industry: searchRegex },
-        { description: searchRegex },
-        { address: searchRegex },
-        { city: searchRegex },
-        { state: searchRegex },
-        { country: searchRegex },
-        { pincode: searchRegex },
-        { type: searchRegex },
-        { website: searchRegex },
-        { email: searchRegex },
-        { phone: searchRegex }
+        { name: regex },
+        { industry: regex },
+        { description: regex },
+        { address: regex },
+        { city: regex },
+        { state: regex },
+        { country: regex },
+        { pincode: regex },
+        { type: regex },
+        { website: regex },
+        { email: regex },
+        { phone: regex }
       ];
     }
 
     let sortQuery = {};
-    if (req.query.sort) {
-      const sortFields = req.query.sort.split(",");
-      sortFields.forEach(field => {
+    if (sort) {
+      sort.split(",").forEach(field => {
         const [key, order] = field.split(":");
         sortQuery[key] = order === "desc" ? -1 : 1;
       });
     }
 
-    const page = parseInt(req.query.page) || 1;
-    const limit = parseInt(req.query.limit) || 50;
-    const skip = (page - 1) * limit;
+    const pageNum = parseInt(page) || 1;
+    const limitNum = parseInt(limit) || 10;
+    const skip = (pageNum - 1) * limitNum;
+
+    const totalCount = await Company.countDocuments({});
 
     const companies = await Company.find(filterQuery)
       .sort(sortQuery)
       .skip(skip)
-      .limit(limit);
+      .limit(limitNum);
 
     res.status(200).json({
       success: true,
-      count: companies.length,
-      page,
+      count: totalCount, 
       data: companies
     });
-
   } catch (error) {
     res.status(500).json({
       success: false,
@@ -87,7 +82,6 @@ const getCompanies = async (req, res) => {
     });
   }
 };
-
 
 const getCompanyById = async (req, res) => {
   try {
@@ -115,7 +109,6 @@ const getCompanyById = async (req, res) => {
   }
 };
 
-const Company = require("../models/companyModel");
 
 const updateCompany = async (req, res) => {
   try {
@@ -173,7 +166,7 @@ const updateCompany = async (req, res) => {
 };
 
 
-const deleteCompanyById = async (req, res) => {
+const deleteCompany = async (req, res) => {
   try {
     const company = await Company.findByIdAndDelete(req.params.id);
 
