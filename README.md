@@ -14,6 +14,7 @@ A full-stack web application for managing company listings, built with React.js 
 - [Setup Instructions](#setup-instructions)
 - [API Endpoints](#api-endpoints)
 - [Frontend Usage](#frontend-usage)
+- [Backend Usage](#backend-usage)
 
 ---
 
